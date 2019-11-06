@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MenuTest</string>
+    <string name="navigation_drawer_open">Open Navigation Bar</string>
+    <string name="navigation_drawer_close">Closed Navigation Bar</string>
+</resources>
