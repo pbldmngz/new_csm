@@ -1,12 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <RelativeLayout
+        android:id="@+id/rellay1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/wallpaper2"/>
+        android:layout_height="wrap_content"
+        android:background="@drawable/grad"
+        android:paddingBottom="20dp">
 
-</LinearLayout>
+        <RelativeLayout
+            android:id="@+id/imgUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circle_border"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:adjustViewBounds="true"
+                android:layout_margin="9dp"
+                android:padding="3dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/wallpaper5"
+                android:background="@drawable/circle"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgUser"
+            android:layout_centerHorizontal="true"
+            android:text="Pablo Dominguez"
+            android:fontFamily="sans-serif-light"
+            android:textSize="32sp"
+            android:layout_marginTop="5sp"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:layout_centerHorizontal="true"
+            android:text="software engineer"
+            android:textAllCaps="true"
+            android:fontFamily="sans-serif"
+            android:textSize="14sp"
+            android:layout_marginTop="15sp"
+            android:textColor="@color/title"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linlay1"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/rellay1"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@color/groupsBg"
+            android:layout_gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:textSize="25sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-light"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="groups"
+                    android:textAllCaps="true"
+                    android:textSize="13sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-light"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@color/studentsBg"
+            android:layout_gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="135"
+                    android:textSize="25sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-light"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="students"
+                    android:textAllCaps="true"
+                    android:textSize="13sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-light"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/linlay1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/headings"
+                    android:textSize="13sp"
+                    android:text="Email"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:text="pablo.dominguez@cetys.mx"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/grey" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/headings"
+                    android:textSize="13sp"
+                    android:text="Phone"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:text="(646) 210-8637"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/grey" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <CalendarView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#FFF"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/grey" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
+

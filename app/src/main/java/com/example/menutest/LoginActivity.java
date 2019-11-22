@@ -31,35 +31,24 @@ public class LoginActivity extends AppCompatActivity {
         show_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog();
+                showLogin();
             }
         });
     }
 
-    private void showDialog() {
-        AlertDialog.Builder alert;
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            alert = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
-        }
-        else {
-            alert = new AlertDialog.Builder(this);
-        }
+    private void showLogin() {
 
-        LayoutInflater inflater = getLayoutInflater();
+        setContentView(R.layout.login_data);
 
-        View view = inflater.inflate(R.layout.login_data, null);
+        name = findViewById(R.id.edUsername);
+        password = findViewById(R.id.edPassword);
+        info = findViewById(R.id.info);
 
-        name = view.findViewById(R.id.edUsername);
-        password = view.findViewById(R.id.edPassword);
+        info.setText("Number of attempts remaining: 5");
 
-        alert.setView(view);
-        alert.setCancelable(false);
+        btn_login = findViewById(R.id.btn_login);
+        btn_close = findViewById(R.id.btn_close);
 
-        AlertDialog dialog = alert.create();
-        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        dialog.show();
-
-        btn_login = view.findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,22 +56,31 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
+        btn_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+            }
+        });
     }
 
     private void Validate(String userName, String userPassword) {
         if((userName.equals("admin")) && (userPassword.equals("1234"))) {
-            Intent intent = new Intent(LoginActivity.this, profileFragment.class);
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         }
+
         else {
-            counter--;
+            counter --;
+            info.setText("Number of attempts remaining: " + String.valueOf(counter));
 
-            info.setText("No of attempts remaining: " + String.valueOf(counter));
-
-            if(counter == 0) {
-                show_login.setEnabled(false);
+            if (counter == 0) {
+                btn_login.setEnabled(false);
             }
         }
+
     }
 }
