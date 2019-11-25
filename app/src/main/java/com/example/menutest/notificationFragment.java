@@ -10,9 +10,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class notificationFragment extends Fragment {
+    View v;
+
+    public notificationFragment() {
+    }
+
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_notification, container, false);
+    public View onCreateView( LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        v = inflater.inflate(R.layout.fragment_notification, container, false);
+        return v;
     }
 }

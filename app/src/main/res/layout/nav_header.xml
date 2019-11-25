@@ -9,14 +9,14 @@
     android:background="@color/colorAccent">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"/>
+        android:layout_width="64dp"
+        android:layout_height="70dp"
+        android:src="@drawable/professor_default" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:text="This is a header"
+        android:text="Professor"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 </LinearLayout>
