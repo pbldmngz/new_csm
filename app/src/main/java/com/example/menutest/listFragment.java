@@ -71,7 +71,7 @@ public class listFragment extends Fragment {
             url = new URL(sql);
             conn = (HttpURLConnection) url.openConnection();
 
-            conn.setRequestMethod("GET");
+            conn.setRequestMethod("POST");
 
             conn.connect();
 
