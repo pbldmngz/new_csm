@@ -1,5 +1,5 @@
 package com.example.menutest;
-
+//Diabetes 0-0
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -67,7 +67,6 @@ public class listFragment extends Fragment {
 
         URL url = null;
         HttpURLConnection conn;
-
         try {
             url = new URL(sql);
             conn = (HttpURLConnection) url.openConnection();
