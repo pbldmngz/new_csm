@@ -8,17 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-
-import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,9 +26,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import Adapter.SectionPagerAdapter;
-
 public class listFragment extends Fragment {
+
+    TextView display;
 
     public listFragment() {
     }
@@ -44,6 +43,8 @@ public class listFragment extends Fragment {
 
         ListView listView = (ListView) view.findViewById(R.id.mainListMenu);
 
+        display = (TextView) view.findViewById(R.id.displayJson);
+
         ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
@@ -51,10 +52,14 @@ public class listFragment extends Fragment {
         );
 
         listView.setAdapter(listViewAdapter);
+
+        getData();
+
         return view;
     }
 
-    public void getData(View view) {
+
+    public void getData() {
         String sql = "http://localhost:49775/login";
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -89,11 +94,16 @@ public class listFragment extends Fragment {
 
             jsonArr = new JSONArray(json);
 
+            String message = "";
+
             for(int i=0;i<jsonArr.length();i++) {
                 JSONObject jsonObject = jsonArr.getJSONObject(i);
 
                 Log.d("Salida",jsonObject.optString("correo"));
+                message += "Descripcion " +i+ " "+ jsonObject.optString("correo") + "\n";
             }
+
+            display.setText(message);
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
