@@ -11,13 +11,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 
 public class dataController {
-    //devuelve un boolean, servirá para validar
 
+    //devuelve un boolean, servirá para validar
     public static boolean validLogin(String correo, String password) {
         return Boolean.parseBoolean(getData(false,
                 "login", new String[][]{{"correo", correo}, {"password", password}}).optString(0));
@@ -47,7 +46,7 @@ public class dataController {
         return ls;
     }
 
-    //Ver individualmente a una persona (no funciona aún)
+    //Ver individualmente a una persona
     public static Persona persona(boolean alumno, int id) {
         String str = alumno ? "alumno" : "profesor";
         String sql = "http://10.0.2.2:49775/" + str + "/ver/?id=" + id;
@@ -87,8 +86,8 @@ public class dataController {
         }
         return null;
     }
-        //Funciona igual que el método de antes
 
+    //Funciona igual que el método de antes
     public static ArrayList<Persona> alumnosProfesor(int id, int pagina){
         ArrayList<Persona> ls = new ArrayList();
         JSONArray jarr = getData(false, "profesor/alumnos",
@@ -111,7 +110,6 @@ public class dataController {
     }
 
     //Envío de mensajes, recibe true si el mensaje se envió correctamente
-
     public static boolean enviar(int id_emisor, int id_receptor, String mensaje){
         return Boolean.parseBoolean(getData(false, "mensaje/enviar",
                 new String[][] {{"id_emisor", String.valueOf(id_emisor)},{"id_receptor",
