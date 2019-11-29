@@ -53,7 +53,8 @@ public class listFragment extends Fragment {
                 //dataController.persona(true, 2000).correo};
                 //dataController.persona(false, 620).correo};
                 //msg_enviado};
-                dataController.buzon(617, 1).get(0).contenido};
+                //dataController.buzon(617, 1).get(0).contenido};
+                String.valueOf(dataController.grupoAlumno(620).alumnos)};
                 //dataController.buzon(617, 1).get(1).contenido};
                 //};
 

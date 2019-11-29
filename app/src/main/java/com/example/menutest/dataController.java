@@ -134,6 +134,41 @@ public class dataController {
         return ls;
     }
 
+    public static grupoAlumno grupoAlumno(int id) {
+        String sql = "http://10.0.2.2:49775/profesor/grupo_alumno/?id=" + id;
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        URL url = null;
+        HttpURLConnection conn;
+        try {
+            url = new URL(sql);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+
+            conn.connect();
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            JSONObject jsonObject = new JSONObject(response.toString());
+
+            return new grupoAlumno(
+                    Integer.parseInt(jsonObject.getString("grupos")),
+                    Integer.parseInt(jsonObject.getString("alumnos")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static JSONArray getData(boolean get, String dir, String[][] data) {
         String sql = "http://10.0.2.2:49775/" + dir;
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
