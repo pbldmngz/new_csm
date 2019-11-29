@@ -28,7 +28,7 @@ public class profileFragment extends Fragment {
 
         numberGroups = (TextView) view.findViewById(R.id.numberGroups);
 
-        numberGroups.setText(dataController.persona(false, 620).toString());
+        numberGroups.setText(dataController.persona(false, 620).tel_grupo.toString());
 
         return view;
     }
