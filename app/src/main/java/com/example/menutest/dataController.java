@@ -34,7 +34,7 @@ public class dataController {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }
+        }//hola esto ya funciona
         return ls;
     }
     //>>>Falta terminar este metodo individual y crear los dos de mensajería<<<//
