@@ -58,7 +58,7 @@ public class listFragment extends Fragment {
 
 
     public void getData() {
-        String sql = "http://localhost:49775/login";
+        String sql = "http://10.0.2.2:49775/alumno/listado/?pagina=2";
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -67,10 +67,14 @@ public class listFragment extends Fragment {
         HttpURLConnection conn;
         try {
             url = new URL(sql);
+
             conn = (HttpURLConnection) url.openConnection();
 
-            conn.setRequestMethod("POST");
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
+            conn.setRequestProperty("Accept","*/*");
 
+            conn.getPermission();
             conn.connect();
 
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
