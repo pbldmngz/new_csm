@@ -23,6 +23,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.SQLOutput;
 
 public class listFragment extends Fragment {
 
@@ -37,12 +38,28 @@ public class listFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_list, container, false);
 
-        String [] menuItems = {"Test", "Test2", "Test3"};
+        //Ejemplo de uso del validLogin, devuelve true/false, te lo dejo a ti
+        String valid = (dataController.validLogin("Araceli.Cabrera.625@cetys.mx","treeeee")) ? "valido":"no existe";
+        String [] menuItems = new String[0];
+
+        String msg_enviado = (dataController.enviar(620, 621, "Esto es una prueba")) ? "Enviado":"Error";
+        //Lo que se obtine de los metodos con listado son listas de JSONObject, usa estos atributos como ejemplo
+        // Cuando los uses puedes guardar el JsonObject en una variable para no tener que llamar el método a cada vez
+        try {
+            menuItems = new String[]{"a","b","c","d", valid,
+                    dataController.listado(true, 1).get(0).getString("correo"),
+                    dataController.alumnosProfesor(620, 1).get(0).getString("nombre"),
+                    //dataController.persona(true, 2000).getString("nombre"),
+                    msg_enviado};
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         ListView listView = (ListView) view.findViewById(R.id.mainListMenu);
 
         display = (TextView) view.findViewById(R.id.displayJson);
 
+        //Necesitamos poder poner de forma ordenada los datos, como en columnas
         ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
@@ -51,67 +68,11 @@ public class listFragment extends Fragment {
 
         listView.setAdapter(listViewAdapter);
 
-        getData();
+
 
         return view;
     }
 
 
-    public void getData() {
-        String sql = "http://10.0.2.2:49775/alumno/listado/?pagina=2";
 
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        URL url = null;
-        HttpURLConnection conn;
-        try {
-            url = new URL(sql);
-
-            conn = (HttpURLConnection) url.openConnection();
-
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
-            conn.setRequestProperty("Accept","*/*");
-
-            conn.getPermission();
-            conn.connect();
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-            String inputLine;
-
-            StringBuffer response = new StringBuffer();
-
-            String json = "";
-
-            while((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-
-            json = response.toString();
-
-            JSONArray jsonArr = null;
-
-            jsonArr = new JSONArray(json);
-
-            String message = "";
-
-            for(int i=0;i<jsonArr.length();i++) {
-                JSONObject jsonObject = jsonArr.getJSONObject(i);
-
-                Log.d("Salida",jsonObject.optString("correo"));
-                message += "Descripcion " +i+ " "+ jsonObject.optString("correo") + "\n";
-            }
-
-            display.setText(message);
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
 }
