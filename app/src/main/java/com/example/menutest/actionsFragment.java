@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class actionsFragment extends Fragment {
 
     View v;
@@ -20,6 +23,7 @@ public class actionsFragment extends Fragment {
     @Override
     public View onCreateView( LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_actions, container, false);
+
         return v;
     }
 }
