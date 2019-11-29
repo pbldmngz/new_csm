@@ -20,5 +20,12 @@ public class notificationFragment extends Fragment {
     public View onCreateView( LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_notification, container, false);
         return v;
-    }
+        Notification.Campat.Builder builder =new Notification.Campat.Builder(this);
+        builder.setContentTitle("correo del emisor")
+                String text = "mesaje que envio";
+        builder.setContentText(text);
+        PendingIntent contentintent=new PendingIntent(this);
+        builder.setContentIntent(contentintent);
+        Notification notification=builder.build();
+        NotificationManagerCompat.from(this).notify(0,notification);
 }
