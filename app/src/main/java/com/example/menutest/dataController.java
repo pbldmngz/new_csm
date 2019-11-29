@@ -116,6 +116,24 @@ public class dataController {
                         String.valueOf(id_receptor)},{"mensaje", mensaje}}).optString(0));
     }
 
+    public static ArrayList<Mensaje> buzon(int id, int pagina){
+        ArrayList<Mensaje> ls = new ArrayList();
+        JSONArray jarr = getData(false, "mensaje/ver",
+                new String[][] {{"id", id + ""},{"pagina", pagina + ""}});
+        for (int i = 0; i < jarr.length(); i++){
+            try {
+                JSONObject jsonObject = new JSONObject(jarr.optString(i));
+                ls.add(new Mensaje(
+                        Integer.parseInt(jsonObject.getString("id_emisor")),
+                        jsonObject.getString("contenido"),
+                        jsonObject.getString("fecha")));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return ls;
+    }
+
     public static JSONArray getData(boolean get, String dir, String[][] data) {
         String sql = "http://10.0.2.2:49775/" + dir;
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
