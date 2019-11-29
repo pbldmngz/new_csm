@@ -16,7 +16,7 @@ import org.w3c.dom.Text;
 
 public class profileFragment extends Fragment {
 
-    TextView numberGroups, profilePhone, profileEmail, tv_name, tv_lastname, tv_title;
+    TextView numberGroups, profilePhone, profileEmail, tv_name, tv_title;
 
     public profileFragment() {
     }
@@ -30,13 +30,11 @@ public class profileFragment extends Fragment {
         profilePhone = (TextView) view.findViewById(R.id.profilePhone);
         profileEmail = (TextView) view.findViewById(R.id.profileEmail);
         tv_name = (TextView) view.findViewById(R.id.tv_name);
-        tv_lastname = (TextView) view.findViewById(R.id.tv_lastname);
         tv_title = (TextView) view.findViewById(R.id.tv_title);
 
         profilePhone.setText(telGen(dataController.persona(false, 620).tel_grupo));
         profileEmail.setText(dataController.persona(false, 620).correo);
         tv_name.setText(dataController.persona(false, 620).nombre);
-        tv_lastname.setText(dataController.persona(false, 620).primer_apellido);
         tv_title.setText(dataController.persona(false, 620).id);
 
         return view;
