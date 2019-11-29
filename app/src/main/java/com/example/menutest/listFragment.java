@@ -48,17 +48,15 @@ public class listFragment extends Fragment {
         //Lo que se obtine de los metodos con listado son listas de JSONObject, usa estos atributos como ejemplo
         // Cuando los uses puedes guardar el JsonObject en una variable para no tener que llamar el método a cada vez
 
-        try {
-            menuItems = new String[]{"a","b","c","d", valid,
-                    dataController.listado(true, 1).get(0).getString("correo"),
-                    dataController.alumnosProfesor(620, 1).get(0).getString("nombre"),
 
-                    //dataController.persona(true, 2000).getString("nombre"),
+        menuItems = new String[]{"a","b","c","d", valid,
+                dataController.listado(true, 1).get(0).correo,
+                dataController.alumnosProfesor(620, 1).get(0).primer_apellido,
 
-                    msg_enviado};
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+                //dataController.persona(true, 2000).getString("nombre"),
+
+                msg_enviado};
+
 
         ListView listView = (ListView) view.findViewById(R.id.mainListMenu);
 

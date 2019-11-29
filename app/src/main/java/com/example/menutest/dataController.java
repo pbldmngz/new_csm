@@ -25,27 +25,40 @@ public class dataController {
     //el JSON resultante puede tener estos valores
     //(int id, string correo, string tel_grupo, string nombre, string primer_apellido, string segundo_apellido)
 
-    public static ArrayList<JSONObject> listado(boolean alumno, int pagina){
+    public static ArrayList<Persona> listado(boolean alumno, int pagina){
         String str = alumno ? "alumno":"profesor";
-        ArrayList ls = new ArrayList();
+        ArrayList<Persona> ls = new ArrayList();
         JSONArray jarr = getData(true, str + "/listado/?pagina=" + pagina, new String[][] {});
         for (int i = 0; i < jarr.length(); i++){
             try {
                 JSONObject jsonObject = new JSONObject(jarr.optString(i));
-                ls.add(jsonObject);
+                ls.add(new Persona(
+                        Integer.parseInt(jsonObject.getString("id")),
+                        jsonObject.getString("correo"),
+                        jsonObject.getString("tel_grupo"),
+                        jsonObject.getString("nombre"),
+                        jsonObject.getString("primer_apellido"),
+                        jsonObject.getString("segundo_apellido")));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }//hola esto ya funciona
+        }
         return ls;
     }
     //>>>Falta terminar este metodo individual y crear los dos de mensajería<<<//
     //Ver individualmente a una persona (no funciona aún)
 
-    public static JSONObject persona(boolean alumno, int id){
+    public static Persona persona(boolean alumno, int id){
         String str = alumno ? "alumno":"profesor";
         try {
-            return new JSONObject(getData(true, str + "/ver/?id=" + id, new String[][] {}).optString(0));
+            JSONObject jsonObject = new JSONObject(getData(true, str + "/ver/?id=" + id, new String[][] {}).optString(0));
+            return new Persona(
+                    Integer.parseInt(jsonObject.getString("id")),
+                    jsonObject.getString("correo"),
+                    jsonObject.getString("tel_grupo"),
+                    jsonObject.getString("nombre"),
+                    jsonObject.getString("primer_apellido"),
+                    jsonObject.getString("segundo_apellido"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -54,14 +67,20 @@ public class dataController {
 
     //Funciona igual que el método de antes
 
-    public static ArrayList<JSONObject> alumnosProfesor(int id, int pagina){
-        ArrayList ls = new ArrayList();
+    public static ArrayList<Persona> alumnosProfesor(int id, int pagina){
+        ArrayList<Persona> ls = new ArrayList();
         JSONArray jarr = getData(false, "profesor/alumnos",
-                new String[][] {{"id", String.valueOf(id)},{"pagina", String.valueOf(pagina)}});
+                new String[][] {{"id", id + ""},{"pagina", pagina + ""}});
         for (int i = 0; i < jarr.length(); i++){
             try {
                 JSONObject jsonObject = new JSONObject(jarr.optString(i));
-                ls.add(jsonObject);
+                ls.add(new Persona(
+                        Integer.parseInt(jsonObject.getString("id")),
+                        jsonObject.getString("correo"),
+                        jsonObject.getString("tel_grupo"),
+                        jsonObject.getString("nombre"),
+                        jsonObject.getString("primer_apellido"),
+                        jsonObject.getString("segundo_apellido")));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
