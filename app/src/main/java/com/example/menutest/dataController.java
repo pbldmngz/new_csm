@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 public class dataController {
     //devuelve un boolean, servirá para validar
+
     public static boolean validLogin (String correo, String password){
         return Boolean.parseBoolean(getData(false,
                 "login", new String[][] {{"correo",correo},{"password",password}}).optString(0));
@@ -23,6 +24,7 @@ public class dataController {
 
     //el JSON resultante puede tener estos valores
     //(int id, string correo, string tel_grupo, string nombre, string primer_apellido, string segundo_apellido)
+
     public static ArrayList<JSONObject> listado(boolean alumno, int pagina){
         String str = alumno ? "alumno":"profesor";
         ArrayList ls = new ArrayList();
@@ -39,6 +41,7 @@ public class dataController {
     }
     //>>>Falta terminar este metodo individual y crear los dos de mensajería<<<//
     //Ver individualmente a una persona (no funciona aún)
+
     public static JSONObject persona(boolean alumno, int id){
         String str = alumno ? "alumno":"profesor";
         try {
@@ -50,6 +53,7 @@ public class dataController {
     }
 
     //Funciona igual que el método de antes
+
     public static ArrayList<JSONObject> alumnosProfesor(int id, int pagina){
         ArrayList ls = new ArrayList();
         JSONArray jarr = getData(false, "profesor/alumnos",
@@ -66,6 +70,7 @@ public class dataController {
     }
 
     //Envío de mensajes, recibe true si el mensaje se envió correctamente
+
     public static boolean enviar(int id_emisor, int id_receptor, String mensaje){
         return Boolean.parseBoolean(getData(false, "profesor/alumnos",
                 new String[][] {{"id_emisor", String.valueOf(id_emisor)},{"id_receptor",

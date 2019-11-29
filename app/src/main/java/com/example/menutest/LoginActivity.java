@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void Validate(String userName, String userPassword) {
-        if((userName.equals("admin")) && (userPassword.equals("1234"))) {
+        if(dataController.validLogin(userName, userPassword) == true) {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         }
