@@ -39,7 +39,7 @@ public class listFragment extends Fragment {
         //Ejemplo de uso del validLogin, devuelve true/false, te lo dejo a ti
 
         //String valid = (dataController.validLogin("Araceli.Cabrera.625@cetys.mx","treeeee")) ? "valido":"no existe";
-        String [] menuItems = new String[0];
+        String [] menuItems;
 
         String msg_enviado = (dataController.enviar(620, 621, "Esto es una prueba")) ? "Enviado":"Error";
 
