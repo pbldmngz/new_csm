@@ -27,8 +27,6 @@ import java.sql.SQLOutput;
 
 public class listFragment extends Fragment {
 
-    TextView display;
-
     public listFragment() {
     }
 
@@ -57,10 +55,7 @@ public class listFragment extends Fragment {
                 //msg_enviado
                 //};
 
-
         ListView listView = (ListView) view.findViewById(R.id.mainListMenu);
-
-        display = (TextView) view.findViewById(R.id.displayJson);
 
         //Necesitamos poder poner de forma ordenada los datos, como en columnas
 

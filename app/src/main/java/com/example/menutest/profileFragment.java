@@ -16,7 +16,7 @@ import org.w3c.dom.Text;
 
 public class profileFragment extends Fragment {
 
-    TextView numberGroups;
+    TextView numberGroups, profilePhone;
 
     public profileFragment() {
     }
@@ -27,8 +27,9 @@ public class profileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         numberGroups = (TextView) view.findViewById(R.id.numberGroups);
+        profilePhone = (TextView) view.findViewById(R.id.profilePhone);
 
-        numberGroups.setText(dataController.persona(false, 620).tel_grupo.toString());
+        profilePhone.setText(dataController.persona(false, 620).tel_grupo);
 
         return view;
     }
