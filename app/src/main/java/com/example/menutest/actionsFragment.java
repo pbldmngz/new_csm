@@ -25,7 +25,6 @@ public class actionsFragment extends Fragment {
     EditText year = null;
     Spinner month = null;
     EditText day = null;
-    CheckBox duration = null;
     Spinner hour = null;
     EditText minute = null;
     Button add = null;
@@ -48,7 +47,6 @@ public class actionsFragment extends Fragment {
         year = (EditText) view.findViewById(R.id.etAño);
         month = (Spinner) view.findViewById(R.id.spMes);
         day = (EditText) view.findViewById(R.id.etDia);
-        duration = (CheckBox) view.findViewById(R.id.chkDuracion);
         hour = (Spinner) view.findViewById(R.id.spHora);
         minute = (EditText) view.findViewById(R.id.etMinuto);
         add = (Button) view.findViewById(R.id.btnAnadir);
@@ -93,7 +91,6 @@ public class actionsFragment extends Fragment {
                 intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, cal.getTimeInMillis());
                 intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, cal.getTimeInMillis() + 60 * 60 * 1000);
 
-                intent.putExtra(CalendarContract.Events.ALL_DAY, duration.isSelected());
                 intent.putExtra(CalendarContract.Events.TITLE, title.getText().toString());
                 intent.putExtra(CalendarContract.Events.DESCRIPTION, description.getText().toString());
                 intent.putExtra(CalendarContract.Events.EVENT_LOCATION, location.getText().toString());
