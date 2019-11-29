@@ -28,8 +28,11 @@ public class profileFragment extends Fragment {
 
         numberGroups = (TextView) view.findViewById(R.id.numberGroups);
 
-        numberGroups.setText(dataController.persona(false, 620).tel_grupo.toString());
+        numberGroups.setText(telGen(dataController.persona(false, 620).tel_grupo));
 
         return view;
+    }
+    private String telGen(String base){
+        return "(" + base.substring(0,3) + ") " + base.substring(3,7) + "-" + base.substring(7,10);
     }
 }
