@@ -33,8 +33,11 @@ public class profileFragment extends Fragment {
         tv_title = (TextView) view.findViewById(R.id.tv_title);
 
         profilePhone.setText(telGen(dataController.persona(false, 620).tel_grupo));
+
         profileEmail.setText(dataController.persona(false, 620).correo);
+
         tv_name.setText(dataController.persona(false, 620).nombre);
+
         tv_title.setText(dataController.persona(false, 620).id);
 
         return view;
