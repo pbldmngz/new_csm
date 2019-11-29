@@ -40,7 +40,7 @@ public class listFragment extends Fragment {
 
         //Ejemplo de uso del validLogin, devuelve true/false, te lo dejo a ti
 
-        String valid = (dataController.validLogin("Araceli.Cabrera.625@cetys.mx","treeeee")) ? "valido":"no existe";
+        //String valid = (dataController.validLogin("Araceli.Cabrera.625@cetys.mx","treeeee")) ? "valido":"no existe";
         String [] menuItems = new String[0];
 
         String msg_enviado = (dataController.enviar(620, 621, "Esto es una prueba")) ? "Enviado":"Error";
@@ -49,13 +49,13 @@ public class listFragment extends Fragment {
         // Cuando los uses puedes guardar el JsonObject en una variable para no tener que llamar el método a cada vez
 
 
-        menuItems = new String[]{"a","b","c","d", valid,
-                dataController.listado(true, 1).get(0).correo,
-                dataController.alumnosProfesor(620, 1).get(0).primer_apellido,
-
-                //dataController.persona(true, 2000).getString("nombre"),
-
-                msg_enviado};
+        menuItems = new String[]{"a","b","c","d",//, valid,
+                //dataController.listado(true, 1).get(0).correo
+                //dataController.alumnosProfesor(620, 1).get(0).primer_apellido};
+                //dataController.persona(true, 2000).correo
+                dataController.persona(false, 620).correo};
+                //msg_enviado
+                //};
 
 
         ListView listView = (ListView) view.findViewById(R.id.mainListMenu);
