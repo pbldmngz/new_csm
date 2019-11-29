@@ -48,11 +48,13 @@ public class listFragment extends Fragment {
 
 
         menuItems = new String[]{"a","b","c","d",//, valid,
-                //dataController.listado(true, 1).get(0).correo
+                //dataController.listado(true, 1).get(0).correo};
                 //dataController.alumnosProfesor(620, 1).get(0).primer_apellido};
-                //dataController.persona(true, 2000).correo
-                dataController.persona(false, 620).correo};
-                //msg_enviado
+                //dataController.persona(true, 2000).correo};
+                //dataController.persona(false, 620).correo};
+                //msg_enviado};
+                dataController.buzon(617, 1).get(0).contenido};
+                //dataController.buzon(617, 1).get(1).contenido};
                 //};
 
         ListView listView = (ListView) view.findViewById(R.id.mainListMenu);
