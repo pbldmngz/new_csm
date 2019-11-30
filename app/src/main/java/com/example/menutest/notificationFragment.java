@@ -1,6 +1,7 @@
 package com.example.menutest;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,9 +22,9 @@ import java.util.zip.Inflater;
 
 public class notificationFragment extends Fragment {
 
-    ListView listNotifications;
+    private Activity activity;
 
-    EditText id_emisor, id_receptor, message;
+    ListView listNotifications;
 
     public notificationFragment() {
     }
@@ -42,9 +43,7 @@ public class notificationFragment extends Fragment {
 
        listNotifications = (ListView) view.findViewById(R.id.listNotifications);
 
-       id_emisor = (EditText) view.findViewById(R.id.id_emisor);
-       id_receptor = (EditText) view.findViewById(R.id.id_receptor);
-       message = (EditText) view.findViewById(R.id.messageNotifications);
+
 
         String [] menuItems;
 
@@ -74,7 +73,9 @@ public class notificationFragment extends Fragment {
         int id = item.getItemId();
 
         if(id == R.id.optionsMenu) {
-
+            Intent intent = new Intent(activity, sendMessageClass.class);
+            activity.startActivity(intent);
+            activity.finish();
         }
 
         return super.onOptionsItemSelected(item);
