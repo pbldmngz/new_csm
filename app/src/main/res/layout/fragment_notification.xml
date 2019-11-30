@@ -3,21 +3,15 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.tabs.TabLayout
+        <ListView
+            android:id="@+id/listNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="588dp" />
+
+    <Button
+        android:id="@+id/writeMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/grad">
-
-
-
-    </com.google.android.material.tabs.TabLayout>
-
-    <ListView
-        android:id="@+id/listNotifications"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-
-
+        android:text="Button" />
 
 </LinearLayout>

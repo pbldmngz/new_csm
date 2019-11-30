@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -22,7 +23,7 @@ import java.util.zip.Inflater;
 
 public class notificationFragment extends Fragment {
 
-    private Activity activity;
+    Button writeMessage;
 
     ListView listNotifications;
 
@@ -39,16 +40,12 @@ public class notificationFragment extends Fragment {
     @Override
     public View onCreateView( LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        setHasOptionsMenu(true);
-
         View view = inflater.inflate(R.layout.fragment_notification, container, false);
 
        listNotifications = (ListView) view.findViewById(R.id.listNotifications);
-
-
+       writeMessage = (Button) view.findViewById(R.id.writeMessage);
 
         String [] menuItems;
-
 
         menuItems = new String[]{dataController.buzon(620, 1).get(0).contenido};
 
@@ -60,26 +57,15 @@ public class notificationFragment extends Fragment {
 
         listNotifications.setAdapter(listViewAdapter);
 
+        writeMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), sendMessageClass.class);
+                startActivity(i);
+                (getActivity()).overridePendingTransition(0, 0);
+            }
+        });
+
         return view;
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.options_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        int id = item.getItemId();
-
-        if(id == R.id.optionsMenu) {
-            Intent intent = new Intent(activity, sendMessageClass.class);
-            activity.startActivity(intent);
-            activity.finish();
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }
