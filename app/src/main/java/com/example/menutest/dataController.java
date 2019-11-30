@@ -15,6 +15,20 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class dataController {
+    private static int user = 620;
+
+    public static void setUser(int value){
+        user = value;
+    }
+
+    public static int getUser(){
+        return user;
+    }
+
+    public static int getId(String correo){
+        return Integer.parseInt(getData(true,
+                "profesor/grupo_alumno/?correo="+correo, new String[][]{}).optString(0));
+    }
 
     //devuelve un boolean, servirá para validar
     public static boolean validLogin(String correo, String password) {

@@ -24,6 +24,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLOutput;
+import java.util.Objects;
 
 public class listFragment extends Fragment {
 
@@ -47,16 +48,19 @@ public class listFragment extends Fragment {
         // Cuando los uses puedes guardar el JsonObject en una variable para no tener que llamar el método a cada vez
 
 
-        menuItems = new String[]{"a","b","c","d",//, valid,
+        menuItems = new String[]{"a","b","c","d"//, //String.valueOf(dataController.getUser())
+                //String.valueOf(Objects.requireNonNull(dataController.grupoAlumno(621)).grupos)
+        };//, valid,
                 //dataController.listado(true, 1).get(0).correo};
                 //dataController.alumnosProfesor(620, 1).get(0).primer_apellido};
                 //dataController.persona(true, 2000).correo};
                 //dataController.persona(false, 620).correo};
                 //msg_enviado};
                 //dataController.buzon(617, 1).get(0).contenido};
-                String.valueOf(dataController.grupoAlumno(620).alumnos)};
+                //String.valueOf(dataController.grupoAlumno(620).alumnos)};
                 //dataController.buzon(617, 1).get(1).contenido};
-                //};
+
+
 
         ListView listView = (ListView) view.findViewById(R.id.mainListMenu);
 

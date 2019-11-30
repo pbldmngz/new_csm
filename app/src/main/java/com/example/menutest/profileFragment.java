@@ -16,8 +16,7 @@ import org.w3c.dom.Text;
 
 public class profileFragment extends Fragment {
 
-    TextView numberGroups, profilePhone, profileEmail, tv_name, tv_lastname, tv_title;
-
+    TextView numberGroups, profilePhone, profileEmail, tv_name, tv_lastname, tv_title, nGroups, nStudents;
     public profileFragment() {
     }
 
@@ -32,12 +31,24 @@ public class profileFragment extends Fragment {
         tv_name = (TextView) view.findViewById(R.id.tv_name);
         tv_lastname = (TextView) view.findViewById(R.id.tv_lastname);
         tv_title = (TextView) view.findViewById(R.id.tv_title);
+        //nGroups = view.findViewById(R.id.numberGroups);
+        //nStudents = view.findViewById(R.id.numberStudents);
 
-        profilePhone.setText(telGen(dataController.persona(false, 620).tel_grupo));
-        profileEmail.setText(dataController.persona(false, 620).correo);
-        tv_name.setText(dataController.persona(false, 620).nombre);
-        tv_lastname.setText(dataController.persona(false, 620).primer_apellido);
-        tv_title.setText(dataController.persona(false, 620).id);
+        Persona p = dataController.persona(false, dataController.getUser());
+        grupoAlumno gp = dataController.grupoAlumno(dataController.getUser());
+        //gp.alumnos
+        //gp.grupos
+
+        profilePhone.setText(telGen(p.tel_grupo));
+        profileEmail.setText(p.correo);
+        tv_name.setText(p.nombre + " ");
+        tv_lastname.setText(p.primer_apellido);
+        tv_title.setText(String.valueOf(p.id));
+        //nGroups.setText(String.valueOf(gp.grupos));
+        //nStudents.setText(String.valueOf(gp.alumnos));
+
+
+
 
         return view;
     }
