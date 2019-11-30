@@ -39,6 +39,8 @@ public class notificationFragment extends Fragment {
     @Override
     public View onCreateView( LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+        setHasOptionsMenu(true);
+
         View view = inflater.inflate(R.layout.fragment_notification, container, false);
 
        listNotifications = (ListView) view.findViewById(R.id.listNotifications);
