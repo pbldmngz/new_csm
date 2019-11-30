@@ -39,7 +39,7 @@ public class listFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_list, container, false);
 
-        String [] menuItems;
+        String [] menuItems = new String[] {"test"};
 
         String msg_enviado = (dataController.enviar(620, 621, "Esto es una prueba")) ? "Enviado":"Error";
 
@@ -48,11 +48,12 @@ public class listFragment extends Fragment {
         String str[] = new String[base.size()];
 
         for (int i = 0; i < base.size(); i++) {
-            String a = String.format("%5d%12s%14s%14s", base.get(i).id,
-                    base.get(i).nombre, base.get(i).primer_apellido, base.get(i).segundo_apellido);
-            str[i] = a;
+            str[i] = base.get(i).id + " " + base.get(i).nombre + " " + base.get(i).primer_apellido + " " + base.get(i).segundo_apellido;
         }
 
+
+        //String a = String.format("%5d%12s%14=s%14s", base.get(i).id,
+                //base.get(i).nombre, base.get(i).primer_apellido, base.get(i).segundo_apellido);
         menuItems = str;
 
 
