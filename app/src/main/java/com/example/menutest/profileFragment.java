@@ -17,6 +17,7 @@ import org.w3c.dom.Text;
 public class profileFragment extends Fragment {
 
     TextView numberGroups, profilePhone, profileEmail, tv_name, tv_lastname, tv_title, nGroups, nStudents;
+
     public profileFragment() {
     }
 
@@ -29,7 +30,6 @@ public class profileFragment extends Fragment {
         profilePhone = (TextView) view.findViewById(R.id.profilePhone);
         profileEmail = (TextView) view.findViewById(R.id.profileEmail);
         tv_name = (TextView) view.findViewById(R.id.tv_name);
-        tv_lastname = (TextView) view.findViewById(R.id.tv_lastname);
         tv_title = (TextView) view.findViewById(R.id.tv_title);
         //nGroups = view.findViewById(R.id.numberGroups);
         //nStudents = view.findViewById(R.id.numberStudents);
@@ -46,9 +46,6 @@ public class profileFragment extends Fragment {
         tv_title.setText(String.valueOf(p.id));
         //nGroups.setText(String.valueOf(gp.grupos));
         //nStudents.setText(String.valueOf(gp.alumnos));
-
-
-
 
         return view;
     }
