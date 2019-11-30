@@ -31,21 +31,18 @@ public class profileFragment extends Fragment {
         profileEmail = (TextView) view.findViewById(R.id.profileEmail);
         tv_name = (TextView) view.findViewById(R.id.tv_name);
         tv_title = (TextView) view.findViewById(R.id.tv_title);
-        //nGroups = view.findViewById(R.id.numberGroups);
-        //nStudents = view.findViewById(R.id.numberStudents);
+//        nGroups = view.findViewById(R.id.numberGroups);
+//        nStudents = view.findViewById(R.id.numberStudents);
 
         Persona p = dataController.persona(false, dataController.getUser());
         grupoAlumno gp = dataController.grupoAlumno(dataController.getUser());
-        //gp.alumnos
-        //gp.grupos
 
         profilePhone.setText(telGen(p.tel_grupo));
         profileEmail.setText(p.correo);
-        tv_name.setText(p.nombre + " ");
-        tv_lastname.setText(p.primer_apellido);
+        tv_name.setText(p.nombre + " " + p.primer_apellido);
         tv_title.setText(String.valueOf(p.id));
-        //nGroups.setText(String.valueOf(gp.grupos));
-        //nStudents.setText(String.valueOf(gp.alumnos));
+//        nGroups.setText(String.valueOf(gp.grupos));
+//        nStudents.setText(String.valueOf(gp.alumnos));
 
         return view;
     }

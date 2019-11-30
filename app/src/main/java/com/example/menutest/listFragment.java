@@ -24,6 +24,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Objects;
 
 public class listFragment extends Fragment {
@@ -41,22 +43,27 @@ public class listFragment extends Fragment {
 
         String msg_enviado = (dataController.enviar(620, 621, "Esto es una prueba")) ? "Enviado":"Error";
 
+        ArrayList<Persona> base = dataController.alumnosProfesor(dataController.getUser(),1);
 
-        //Lo que se obtine de los metodos con listado son listas de JSONObject, usa estos atributos como ejemplo
-        // Cuando los uses puedes guardar el JsonObject en una variable para no tener que llamar el método a cada vez
+        String str[] = new String[base.size()];
+
+        for (int i = 0; i < base.size(); i++) {
+            String a = String.format("%5d%12s%14s%14s", base.get(i).id,
+                    base.get(i).nombre, base.get(i).primer_apellido, base.get(i).segundo_apellido);
+            str[i] = a;
+        }
+
+        menuItems = str;
 
 
-        menuItems = new String[]{"a","b","c","d"//, //String.valueOf(dataController.getUser())
-                //String.valueOf(Objects.requireNonNull(dataController.grupoAlumno(621)).grupos)
-        };//, valid,
-                //dataController.listado(true, 1).get(0).correo};
-                //dataController.alumnosProfesor(620, 1).get(0).primer_apellido};
-                //dataController.persona(true, 2000).correo};
-                //dataController.persona(false, 620).correo};
-                //msg_enviado};
-                //dataController.buzon(617, 1).get(0).contenido};
-                //String.valueOf(dataController.grupoAlumno(620).alumnos)};
-                //dataController.buzon(617, 1).get(1).contenido};
+        //dataController.listado(true, 1).get(0).correo};
+        //dataController.alumnosProfesor(620, 1).get(0).primer_apellido};
+        //dataController.persona(true, 2000).correo};
+        //dataController.persona(false, 620).correo};
+        //msg_enviado};
+        //dataController.buzon(617, 1).get(0).contenido};
+        //String.valueOf(dataController.grupoAlumno(620).alumnos)};
+        //dataController.buzon(617, 1).get(1).contenido};
 
 
 
