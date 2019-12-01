@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
 import java.util.zip.Inflater;
 
 public class notificationFragment extends Fragment {
@@ -28,12 +29,6 @@ public class notificationFragment extends Fragment {
     ListView listNotifications;
 
     public notificationFragment() {
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        setHasOptionsMenu(true);
-        super.onCreate(savedInstanceState);
     }
 
     @Nullable
@@ -46,8 +41,15 @@ public class notificationFragment extends Fragment {
        writeMessage = (Button) view.findViewById(R.id.writeMessage);
 
         String [] menuItems;
+        ArrayList<Mensaje> base = dataController.buzon(dataController.getUser(), 1);
 
-        menuItems = new String[]{dataController.buzon(620, 1).get(0).contenido};
+        String str[] = new String[base.size()];
+
+        for (int i = 0; i < base.size(); i++) {
+            str[i] = base.get(i).contenido;
+        }
+
+        menuItems = str;
 
         ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
                 getActivity(),
@@ -62,7 +64,6 @@ public class notificationFragment extends Fragment {
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), sendMessageClass.class);
                 startActivity(i);
-                (getActivity()).overridePendingTransition(0, 0);
             }
         });
 

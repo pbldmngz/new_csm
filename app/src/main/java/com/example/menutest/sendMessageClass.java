@@ -16,6 +16,9 @@ public class sendMessageClass extends AppCompatActivity {
     EditText id_emisor, id_receptor, message;
     Button messageSend, btnReturn;
 
+    public  sendMessageClass(){
+
+    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
